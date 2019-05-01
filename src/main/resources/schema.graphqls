@@ -1,0 +1,29 @@
+type Query {
+  bookById(id: ID): Book
+  bonkers(id: ID): Person 
+}
+
+type Book {
+  id: ID
+  name: String
+  pageCount: Int
+  author: Author
+}
+
+type Author {
+  id: ID
+  firstName: String
+  lastName: String
+}
+
+type Person {
+  id: ID
+  name: String
+  gender: String
+  species: Species
+}
+
+type Species {
+  id: ID
+  name(toggle: Boolean): String
+}

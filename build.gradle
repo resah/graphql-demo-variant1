@@ -1,0 +1,40 @@
+plugins {
+	id 'org.springframework.boot' version '2.1.4.RELEASE'
+	id 'java'
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+	mavenCentral()
+}
+
+ext {
+	set('springCloudVersion', 'Greenwich.SR1')
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-web-services'
+	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-zuul'
+	
+    implementation 'com.graphql-java:graphql-java:11.0' // NEW
+    implementation 'com.graphql-java:graphql-java-spring-boot-starter-webmvc:1.0' // NEW
+    implementation 'com.google.guava:guava:26.0-jre' // NEW
+    
+    implementation 'com.squareup.okhttp3:okhttp:3.14.1'
+    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+  	implementation 'com.squareup.retrofit2:converter-jackson:2.5.0'
+	
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+dependencyManagement {
+	imports {
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+	}
+}
